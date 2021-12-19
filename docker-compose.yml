@@ -11,8 +11,6 @@ services:
       bash -c "python wait_for_postgres.py &&
                ./manage.py migrate &&
                ./manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - ./:/code
     ports:
       - "8000:8000"
     depends_on:
@@ -21,7 +19,5 @@ services:
     restart: always
     build: ./
     command: "mkdocs serve"
-    volumes:
-      - ./:/code
     ports:
       - "8001:8001"
