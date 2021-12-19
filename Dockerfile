@@ -13,7 +13,7 @@ WORKDIR code
 
 EXPOSE 8000
 
-# Convenience line to convert CRLF to LF
+# Convenience line to convert CRLF to LF for running on Windows in easy fashion
 RUN find . -type f -print0 | xargs -0 dos2unix && apt-get --purge remove -y dos2unix
 
 # Run the production server
