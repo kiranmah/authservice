@@ -1,6 +1,6 @@
 # authservice
 
-Authentication application to be used in a microservice architecture. Check out the project's [documentation](http://kiranmah.github.io/authservice/).
+Authentication application to be used in a microservice architecture. Check out the project's documentation on the [authentication method](docs/api/authentication.md) and the [API Endpoints](docs/api/users.md)
 
 # Prerequisites
 
