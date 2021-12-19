@@ -1,7 +1,8 @@
 import factory
-import json
 from faker import Faker
+import json
 import unittest
+
 from django.urls import reverse
 from django.contrib.auth.hashers import check_password
 from rest_framework.test import APITestCase
@@ -73,7 +74,7 @@ class TestUserUpdate(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         user = User.objects.get()
         self.assertEquals(user.first_name, data["first_name"])
-    
+
     def test_invalid_patch_request_returns_correct_responses(self):
         data = {"first_name": fake.first_name()}
         response = self.client.patch(self.url, data)
@@ -95,7 +96,7 @@ class TestUserUpdate(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         user = User.objects.get()
         self.assertEquals(user.first_name, data["first_name"])
-    
+
     def test_invalid_put_request_returns_correct_responses(self):
         data = {"first_name": fake.first_name()}
         response = self.client.put(self.url, data)
@@ -107,7 +108,6 @@ class TestUserUpdate(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
         user = User.objects.get()
         self.assertNotEquals(user.first_name, data["first_name"])
-
 
 
 class TestUserDelete(APITestCase):
