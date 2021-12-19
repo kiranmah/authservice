@@ -73,6 +73,18 @@ class TestUserUpdate(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         user = User.objects.get()
         self.assertEquals(user.first_name, data["first_name"])
+    
+    def test_invalid_patch_request_returns_correct_responses(self):
+        data = {"first_name": fake.first_name()}
+        response = self.client.patch(self.url, data)
+        self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        refresh = RefreshToken.for_user(self.user)
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer  fake-token")
+        response = self.client.patch(self.url, data)
+        self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        user = User.objects.get()
+        self.assertNotEquals(user.first_name, data["first_name"])
 
     def test_valid_put_request_updates_user(self):
         data = {"first_name": fake.first_name()}
@@ -83,6 +95,19 @@ class TestUserUpdate(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         user = User.objects.get()
         self.assertEquals(user.first_name, data["first_name"])
+    
+    def test_invalid_put_request_returns_correct_responses(self):
+        data = {"first_name": fake.first_name()}
+        response = self.client.put(self.url, data)
+        self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        refresh = RefreshToken.for_user(self.user)
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer  fake-token")
+        response = self.client.put(self.url, data)
+        self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        user = User.objects.get()
+        self.assertNotEquals(user.first_name, data["first_name"])
+
 
 
 class TestUserDelete(APITestCase):
