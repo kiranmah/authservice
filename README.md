@@ -1,6 +1,6 @@
 # authservice
 
-Authentication application to be used in a microservice architecture.. Check out the project's [documentation](http://kiranmah.github.io/authservice/).
+Authentication application to be used in a microservice architecture. Check out the project's [documentation](http://kiranmah.github.io/authservice/).
 
 # Prerequisites
 
@@ -13,7 +13,7 @@ Start the dev server for local development:
 docker-compose up -d
 ```
 
-To test in production mode, the docker-compose.yml should be adjusted such that an additional environment variable is added to the `web` service.
+Application set to run in debug mode by default, to test in production mode, the docker-compose.yml should be adjusted such that an additional environment variable is added to the `web` service.
 
 ```docker
  - DJANGO_CONFIGURATION=Production
