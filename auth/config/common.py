@@ -19,7 +19,7 @@ class Common(Configuration):
 
         # Third party apps
         'rest_framework',            # utilities for rest apis
-        'rest_framework.authtoken',  # token authentication
+        'rest_framework_simplejwt',
         'django_filters',            # for filtering rest endpoints
 
         # Your apps
@@ -195,7 +195,6 @@ class Common(Configuration):
             'rest_framework.permissions.IsAuthenticated',
         ],
         'DEFAULT_AUTHENTICATION_CLASSES': (
-            'rest_framework.authentication.SessionAuthentication',
-            'rest_framework.authentication.TokenAuthentication',
+            'rest_framework_simplejwt.authentication.JWTAuthentication',
         )
     }
