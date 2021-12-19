@@ -11,4 +11,4 @@ class IsUser(permissions.BasePermission):
         if not request.user.is_authenticated:
             return False
 
-        return obj == request.user or request.user.is_admin
+        return obj == request.user or request.user.is_superuser
