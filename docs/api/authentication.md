@@ -1,5 +1,5 @@
 # Authentication
-For clients to authenticate, the JWT Bearer token should be included in the Authorization HTTP header. The key should be prefixed by the string literal "Bearer", with whitespace separating the two strings. For example:
+For clients to authenticate, the JWT Bearer token should be included in the Authorization HTTP header. The Access Token is set by default to expire after 5 minutes while the refresh token expires after 1 day. The refresh token must be used to re-generate the access token. The key should be prefixed by the string literal "Bearer", with whitespace separating the two strings. For example:
 
 ```
 Authorization: Bearer eyJ0eXAi1QiLC.eyJ0b2tlblLWM0YzEwODcyMzA0OCJ9.vgc415UaU5J1vKMHYK70
